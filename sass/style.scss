@@ -1,0 +1,98 @@
+@import "variables";
+@import "promo";
+@import "advantages";
+@import "consultation";
+@import "form";
+@import "carousel";
+@import "catalog";
+@import "comments";
+@import "footer";
+@import "overlay";
+
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1em;
+  box-sizing: border-box;
+}
+html {
+  font-family: "MuseoModerno", cursive;
+}
+ul {
+  list-style-type: none;
+}
+.container {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.button {
+  margin-top: 4px;
+  width: 150px;
+  height: 30px;
+  background: $mainC;
+  border-radius: 5px;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  &_main {
+    width: 300px;
+    height: 50px;
+    font-size: 16px;
+  }
+  &_catalog {
+    width: 135px;
+    height: 45px;
+    font-size: 14px;
+  }
+  &_mt {
+    margin-top: 65px;
+  }
+}
+
+.mainHeader {
+  margin-bottom: 60px;
+  font-size: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+@media (max-width: 991px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainHeader {
+    margin-bottom: 40px;
+    font-size: 25px;
+  }
+  .button {
+    &_mt {
+      margin-top: 40px;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .mainHeader {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  .container {
+    width: 95%;
+  }
+  .button {
+    &_mt {
+      margin-top: 20px;
+    }
+    &_main {
+      width: 250px;
+    }
+  }
+}
