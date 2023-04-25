@@ -8,34 +8,28 @@ const swiper = new Swiper(".swiper", {
 });
 
 $(document).ready(function () {
-  $("ul.catalog__tabs").on(
-    "click",
-    "li:not(.catalog__tab_active)",
-    function () {
-      $(this)
-        .addClass("catalog__tab_active")
-        .siblings()
-        .removeClass("catalog__tab_active")
-        .closest("div.container")
-        .find("div.catalog__wrapper")
-        .removeClass("catalog__wrapper_active")
-        .eq($(this).index())
-        .addClass("catalog__wrapper_active");
-    }
-  );
+  $("ul.tabs").on("click", "li:not(.tab_active)", function () {
+    $(this)
+      .addClass("tab_active")
+      .siblings()
+      .removeClass("tab_active")
+      .closest("div.container")
+      .find("div.catalog")
+      .removeClass("catalog_active")
+      .eq($(this).index())
+      .addClass("catalog_active");
+  });
 
-  function toggle(classname) {
-    $(classname).each(function (i) {
+  function toggle(dataType) {
+    $(dataType).each(function (i) {
       $(this).on("click", function () {
-        $(".catalog-item__wrapper")
-          .eq(i)
-          .toggleClass("catalog-item__wrapper_about");
+        $(".catalog__wrapper").eq(i).toggleClass("transformed");
       });
     });
   }
 
-  toggle(".catalog-item__link");
-  toggle(".catalog-item__linkback");
+  toggle("[data-link=about]");
+  toggle("[data-link=back]");
 
   $("[data-modal=consultation]").each(function () {
     $(this).on("click", function () {
@@ -57,7 +51,7 @@ $(document).ready(function () {
     $("#thanks").fadeIn();
   });
 
-  $("[data-modal=thanks2]").on("click", function (e) {
+  $("[data-modal=order]").on("click", function (e) {
     e.preventDefault();
     $("#consultation").fadeOut();
     $("#thanks").fadeIn();
@@ -66,9 +60,7 @@ $(document).ready(function () {
   $(".button_catalog").each(function (i) {
     $(this).on("click", function () {
       $(".overlay").fadeIn();
-      $("#order .modal__subheader").text(
-        $(".catalog-item__subtitle").eq(i).text()
-      );
+      $("#order .modal__subheader").text($(".catalog__name").eq(i).text());
       $("#order").fadeIn();
     });
   });
